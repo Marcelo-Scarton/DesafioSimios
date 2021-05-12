@@ -9,6 +9,10 @@ def test_invalid_square(invalid_square):
     assert is_simian(invalid_square) is False
 
 
+def test_invalid_table(invalid_table):
+    assert is_simian(invalid_table) is False
+
+
 def test_is_valid_square(valid_square):
     assert is_simian(valid_square) is True
 

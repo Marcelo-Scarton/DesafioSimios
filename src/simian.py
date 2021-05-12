@@ -1,10 +1,14 @@
+import re
+
 sequences = ['AAAA', 'TTTT', 'CCCC', 'GGGG']
 
 
 def is_simian(table):
+    if len(table) < 4:
+        return False
     if not is_square(table):
         return False
-    if len(table) < 4:
+    if not is_valid(table):
         return False
     # horizontal
     if verify_by_line(table):
@@ -28,6 +32,14 @@ def is_square(table):
     size = len(table)
     for line in table:
         if len(line) != size:
+            return False
+    return True
+
+
+def is_valid(table):
+    for line in table:
+        test_line = re.findall("[^ATCG]", line)
+        if test_line:
             return False
     return True
 
