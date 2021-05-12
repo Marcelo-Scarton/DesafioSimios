@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture(scope="function")
 def invalid_length():
-    return ['AAA', 'TTT', 'CCC', 'GGG']
+    return ['AAA', 'TTT', 'CCC']
 
 
 @pytest.fixture(scope="function")

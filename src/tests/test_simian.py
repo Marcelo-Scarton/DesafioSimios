@@ -1,4 +1,4 @@
-from src.simian import is_simian, is_square
+from src.simian import is_simian
 
 
 def test_invalid_length(invalid_length):
@@ -6,11 +6,11 @@ def test_invalid_length(invalid_length):
 
 
 def test_invalid_square(invalid_square):
-    assert is_square(invalid_square) is False
+    assert is_simian(invalid_square) is False
 
 
 def test_is_valid_square(valid_square):
-    assert is_square(valid_square) is True
+    assert is_simian(valid_square) is True
 
 
 def test_human_4(human_4):
