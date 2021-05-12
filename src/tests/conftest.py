@@ -7,6 +7,16 @@ def invalid_length():
 
 
 @pytest.fixture(scope="function")
+def invalid_square():
+    return ['ATCG', 'AAAT', 'TTTC', 'CGG']
+
+
+@pytest.fixture(scope="function")
+def valid_square():
+    return ['ATCG', 'ATCG', 'ATCG', 'ATCG']
+
+
+@pytest.fixture(scope="function")
 def human_4():
     return ['ATCG', 'AAAT', 'TTTC', 'CGGG']
 

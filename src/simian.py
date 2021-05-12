@@ -4,6 +4,8 @@ sequences = ['AAAA', 'TTTT', 'CCCC', 'GGGG']
 def is_simian(table):
     if len(table[0]) < 4:
         return False
+    if not is_square(table):
+        return False
     # horizontal
     if verify_by_line(table):
         return True
@@ -20,6 +22,14 @@ def is_simian(table):
     if verify_by_line(left_diagonal_table):
         return True
     return False
+
+
+def is_square(table):
+    size = len(table)
+    for line in table:
+        if len(line) != size:
+            return False
+    return True
 
 
 def verify_by_line(table):
