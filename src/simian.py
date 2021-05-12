@@ -26,7 +26,6 @@ def verify_by_line(table):
     for line in table:
         for sequence in sequences:
             if sequence in line:
-                print(line)
                 return True
     return False
 
@@ -47,5 +46,7 @@ def get_diagonal_table(table, direction):
         beginning = i * ' ' if direction == 'l' else (size - i - 1) * ' '
         end = i * ' ' if direction == 'r' else (size - i - 1) * ' '
         value = beginning + table[i] + end
-        diagonal_table.append(value)
+        count = value.count(" ")
+        if (len(value) - count) >= 4:
+            diagonal_table.append(value)
     return get_vertical_table(diagonal_table)
