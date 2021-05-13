@@ -1,18 +1,15 @@
+import json
 import boto3
 
 from boto3.dynamodb.conditions import Key
 
 
-def insert(table, item_type):
-    dynamodb = boto3.resource('dynamodb')
-    db_table = dynamodb.Table('meli')
-    dna = ''.join(table)
-    db_table.put_item(
-        Item={
-            "dna": dna,
-            "type": item_type
-        }
-    )
+def lambda_handler(event, context):
+    # TODO implement
+    return {
+        'statusCode': 200,
+        'body': json.dumps(stats())
+    }
 
 
 def stats():
