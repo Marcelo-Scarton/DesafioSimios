@@ -1,6 +1,10 @@
 from src.simian import is_simian
 
 
+def test_empty():
+    assert is_simian([]) is False
+
+
 def test_invalid_length(invalid_length):
     assert is_simian(invalid_length) is False
 
