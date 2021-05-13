@@ -1,0 +1,29 @@
+name: Deploy Simian Lambda
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "src/simian_lambda/**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Zip File
+        run: |
+          cd src/simian_lambda
+          zip function_simian.zip lambda_function.py
+      - name: Deploy
+        uses: kazimanzurrashid/aws-lambda-update-action@v1
+        with:
+          zip-file: src/simian_lambda/function_simian.zip
+          publish: true
+          lambda-name: meli
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
