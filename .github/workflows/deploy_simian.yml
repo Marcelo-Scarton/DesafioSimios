@@ -3,7 +3,7 @@ name: Deploy Simian Lambda
 on:
   push:
     branches:
-      - "aws-deploy"
+      - "main"
     paths:
       - "src/simian_lambda/**"
 
