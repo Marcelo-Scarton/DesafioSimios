@@ -3,7 +3,7 @@ name: Deploy Stats Lambda
 on:
   push:
     branches:
-      - "main"
+      - "aws-deploy"
     paths:
       - "src/stats_lambda/**"
 

@@ -1,11 +1,11 @@
 import json
 import boto3
 
+
 from boto3.dynamodb.conditions import Key
 
 
 def lambda_handler(event, context):
-    # TODO implement
     return {
         'statusCode': 200,
         'body': json.dumps(stats())
