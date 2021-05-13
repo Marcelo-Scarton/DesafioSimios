@@ -2,8 +2,6 @@ import json
 import re
 import boto3
 
-from boto3.dynamodb.conditions import Key
-
 
 sequences = ['AAAA', 'TTTT', 'CCCC', 'GGGG']
 
