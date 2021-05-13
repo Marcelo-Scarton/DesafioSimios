@@ -2,23 +2,22 @@ name: Deploy Simian Lambda
 
 on:
   push:
-    branches: [ aws-deploy ]
+    branches: [aws-deploy]
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Zip File
-      run: |
-        zip function.zip src/simian_lambda/lambda_function.py
-    #- name: Deploy
-    #  uses: kazimanzurrashid/aws-lambda-update-action@v1
-    #  with:
-    #    zip-file: dist/api.zip
+      - uses: actions/checkout@v2
+      - name: Zip File
+        run: |
+          zip function.zip src/simian_lambda/lambda_function.py
+      - name: Deploy
+        uses: kazimanzurrashid/aws-lambda-update-action@v1
+        with:
+          zip-file: dist/api.zip
     #  env:
     #    AWS_REGION: ${{ secrets.AWS_REGION }}
     #    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}    
+    #    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

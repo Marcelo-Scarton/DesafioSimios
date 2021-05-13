@@ -1,4 +1,4 @@
-name: Desafio Meli
+name: build
 
 on:
   pull_request:
