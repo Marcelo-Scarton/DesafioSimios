@@ -8,35 +8,35 @@ sequences = ['AAAA', 'TTTT', 'CCCC', 'GGGG']
 def is_simian(table):
     size = len(table)
     if not is_square(table, size):
-        return False
+        return 400
     if not is_valid(table):
-        return False
+        return 400
     if size == 0:
-        return False
+        return 400
     if size < 4:
         insert(table, 0)
-        return False
+        return 403
     # horizontal
     if verify_by_line(table):
         insert(table, 1)
-        return True
+        return 200
     # vertical
     vertical_table = get_vertical_table(table)
     if verify_by_line(vertical_table):
         insert(table, 1)
-        return True
+        return 200
     # right diagonal
     right_diagonal_table = get_diagonal_table(table, size, "r")
     if verify_by_line(right_diagonal_table):
         insert(table, 1)
-        return True
+        return 200
     # left diagonal
     left_diagonal_table = get_diagonal_table(table, size, "l")
     if verify_by_line(left_diagonal_table):
         insert(table, 1)
-        return True
+        return 200
     insert(table, 0)
-    return False
+    return 403
 
 
 def is_square(table, size):
