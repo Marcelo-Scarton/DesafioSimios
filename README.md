@@ -1,2 +1,2 @@
-![build](https://github.com/Marcelo-Scarton/DesafioMeli/actions/workflows/meli.yml/badge.svg)
+![build](https://github.com/Marcelo-Scarton/DesafioMeli/actions/workflows/build.yml/badge.svg)
 # Desafio Meli
