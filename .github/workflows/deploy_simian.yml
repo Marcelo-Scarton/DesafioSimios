@@ -12,11 +12,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Zip File
         run: |
-          zip function_simian.zip src/simian_lambda/lambda_function.py
+          cd src/simian_lambda
+          zip function_simian.zip lambda_function.py
       - name: Deploy
         uses: kazimanzurrashid/aws-lambda-update-action@v1
         with:
-          zip-file: function_simian.zip
+          zip-file: src/simian_lambda/function_simian.zip
           publish: true
           lambda-name: meli
         env:
