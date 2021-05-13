@@ -1,5 +1,8 @@
 import boto3
 
+from boto3.dynamodb.conditions import Key
+from decimal import Decimal, getcontext
+
 
 def insert(table, item_type):
     dynamodb = boto3.resource('dynamodb')
@@ -11,3 +14,23 @@ def insert(table, item_type):
             "type": item_type
         }
     )
+
+
+def stats():
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('meli')
+    mutant = table.scan(
+        FilterExpression=Key('type').eq(1)
+    )
+    human = table.scan(
+        FilterExpression=Key('type').eq(0)
+    )
+    count_mutant_dna = len(mutant['Items'])
+    count_human_dna = len(human['Items'])
+    getcontext().prec = 2
+    ratio = Decimal(count_mutant_dna) / Decimal(count_human_dna)
+    return {
+        "count_mutant_dna": count_mutant_dna,
+        "count_human_dna": count_human_dna,
+        "ratio": ratio
+    }
