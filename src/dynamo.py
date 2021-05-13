@@ -1,7 +1,6 @@
 import boto3
 
 from boto3.dynamodb.conditions import Key
-from decimal import Decimal, getcontext
 
 
 def insert(table, item_type):
@@ -27,10 +26,9 @@ def stats():
     )
     count_mutant_dna = len(mutant['Items'])
     count_human_dna = len(human['Items'])
-    getcontext().prec = 2
-    ratio = Decimal(count_mutant_dna) / Decimal(count_human_dna)
+    ratio = count_mutant_dna / count_human_dna
     return {
         "count_mutant_dna": count_mutant_dna,
         "count_human_dna": count_human_dna,
-        "ratio": ratio
+        "ratio": round(ratio, 2)
     }
