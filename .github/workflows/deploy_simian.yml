@@ -1,4 +1,4 @@
-name: Deploy Simian Lambda
+name: deploy simian lambda
 
 on:
   push:
