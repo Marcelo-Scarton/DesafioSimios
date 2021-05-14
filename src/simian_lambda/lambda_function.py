@@ -2,6 +2,7 @@ import json
 import re
 import boto3
 
+
 sequences = ['AAAA', 'TTTT', 'CCCC', 'GGGG']
 
 
