@@ -1,8 +1,8 @@
 name: build
 
 on:
-  pull_request:
-    branches: [main, codecov]
+  push:
+    branches: [codecov]
 
 jobs:
   build:
