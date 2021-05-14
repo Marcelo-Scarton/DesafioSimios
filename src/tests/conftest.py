@@ -1,6 +1,11 @@
 import pytest
 
 
+@pytest.fixture(scope="module")
+def event():
+    return {"body": None}
+
+
 @pytest.fixture(scope="function")
 def invalid_length():
     return ['AAA', 'TTT', 'CCC']
@@ -14,11 +19,6 @@ def invalid_square():
 @pytest.fixture(scope="function")
 def invalid_table():
     return ['ATCG', 'AAAA', 'TTTC', 'CGGX']
-
-
-@pytest.fixture(scope="function")
-def valid_square():
-    return ['ATCG', 'ATCG', 'ATCG', 'ATCG']
 
 
 @pytest.fixture(scope="function")

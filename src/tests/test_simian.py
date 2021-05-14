@@ -1,4 +1,18 @@
-from src.simian_lambda.lambda_function import is_simian, is_square
+import json
+
+from src.simian_lambda.lambda_function import lambda_handler, is_simian
+
+
+def test_lambda_handler_200(event, horizontal_simian_4):
+    event['body'] = json.dumps({'dna': horizontal_simian_4})
+    response = lambda_handler(event, 'context')
+    assert response['statusCode'] == 200
+
+
+def test_lambda_handler_403(event, human_4):
+    event['body'] = json.dumps({'dna': human_4})
+    response = lambda_handler(event, 'context')
+    assert response['statusCode'] == 403
 
 
 def test_empty():
@@ -15,10 +29,6 @@ def test_invalid_square(invalid_square):
 
 def test_invalid_table(invalid_table):
     assert is_simian(invalid_table) == 400
-
-
-def test_is_valid_square(valid_square):
-    assert is_square(valid_square, len(valid_square)) is True
 
 
 def test_human_4(human_4):

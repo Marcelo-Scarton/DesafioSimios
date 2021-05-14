@@ -6,7 +6,7 @@ sequences = ['AAAA', 'TTTT', 'CCCC', 'GGGG']
 
 
 def lambda_handler(event, context):
-    data = json.loads(event["body"])
+    data = json.loads(event['body'])
     table = data['dna']
     code = is_simian(table)
     if code == 200:
