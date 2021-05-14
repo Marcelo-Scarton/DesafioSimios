@@ -1,4 +1,4 @@
-name: Deploy Stats Lambda
+name: deploy stats lambda
 
 on:
   push:
