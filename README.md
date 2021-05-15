@@ -8,3 +8,6 @@ O algortimo da aplicação é baseado na ideia de um caça-palavras. Antes de pr
 ## Arquitetura
 A arquitetura construída para a aplicação foi baseada em um modelo **Serverless**, fazendo uso de recursos da **AWS**. Foi criada uma **API REST** via **API Gateway**, uma **Lambda** para cada endpoint da API e o **DynamoDB** para armazenar e consultar os DNAs verificados. O modelo construído é baseado no seguinte diagrama:
 ![diagrama-aws](diagram.png)
+## CI/CD
+A implementação da **pipeline de CI/CD** foi feita a partir do **Github Actions**.
+- O workflow de **CI**, chamado de **build**, é disparado toda vez que um  **Pull request** é aberto para a branch **main**. Nesse fluxo, é realizada a **instalação das dependências do projeto**, é feito o **Lint do código**, a **configuração das credenciais da AWS** para os testes, ressaltando que elas estão amazenadas nos secrets do Github, os **testes** são realizados e por fim é feita uma integração com o **[codecov](https://about.codecov.io/)**, no qual são gerados relatórios a partir do coverage resultante dos testes, além de gerar a badge de coverage.
