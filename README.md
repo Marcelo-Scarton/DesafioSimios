@@ -27,7 +27,7 @@ curl -i --request POST 'https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/d
     "dna": ["AAAA", "TTTT", "CCCC", "GGGG"]
 }'
 ```
-- **Significado do código de status da resposta HTTP**
-**200**: O DNA é de um **Símio**.
-**403**: O DNA é de um **Humano**.
-**400**: O DNA é inválido.
+**Significado do código de status da resposta HTTP**
+- **200**: O DNA é de um **Símio**.
+- **403**: O DNA é de um **Humano**.
+- **400**: O DNA é inválido.
