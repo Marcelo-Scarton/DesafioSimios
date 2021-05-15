@@ -36,5 +36,5 @@ curl -i --request POST 'https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/d
 curl -i --request GET 'https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/desafio2/stats' \
 --header 'x-api-key: hqQD4DjAlNPjweDuceV46vmubvFToW52DSarcvh7'
 ```
-**Exemplo de json que é retornado no body da response**
-{"count_mutant_dna": 1, "count_human_dna": 1, "ratio": 1.0}
+**Exemplo de json que é retornado no body da response**:
+- {"count_mutant_dna": 1, "count_human_dna": 1, "ratio": 1.0}
