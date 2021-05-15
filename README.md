@@ -11,4 +11,23 @@ A arquitetura construída para a aplicação foi baseada em um modelo **Serverle
 ## CI/CD
 A implementação da **pipeline de CI/CD** foi feita a partir do **Github Actions**.
 - O workflow de **CI**, chamado de **build**, é disparado toda vez que um  **Pull request** é aberto para a branch **main**. Nesse fluxo, é realizada a **instalação das dependências do projeto**, é feito o **Lint do código**, a **configuração das credenciais da AWS** para os testes, ressaltando que elas estão amazenadas nos secrets do Github, os **testes** são realizados e por fim é feita uma integração com o **[codecov](https://about.codecov.io/)**, no qual são gerados relatórios a partir do coverage resultante dos testes, além de também gerar a badge de coverage.
-- O workflow de **CD** é separado em dois, **deploy simian lambda** e **deploy stats lambda**. Cada um deles é disparado apenas a partir de um **push na branch main**, oriundo do **merge de outra branch** com um **Pull request** aprovado, caso o respectivo código da lambda a qual se refere, **[simian lambda](src/simian_lambda/lambda_function.py)** ou **[stats lambda](src/stats_lambda/lambda_function.py)**, tenha sido alterado. Sendo assim, sempre que houver uma alteração no código de alguma das lambdas, será feito o deploy e a publicação da alteração na AWS.
+- O workflow de **CD** é separado em dois, **deploy simian lambda** e **deploy stats lambda**. Cada um deles é disparado apenas a partir de um **push na branch main**, oriundo do **merge de outra branch** com um **Pull request** aprovado, caso o respectivo código da lambda a qual se refere, **[simian lambda](src/simian_lambda/lambda_function.py)** ou **[stats lambda](src/stats_lambda/lambda_function.py)**, tenha sido alterado. Sendo assim, sempre que houver uma alteração no código de alguma das Lambdas, será feito o deploy e a publicação da alteração na AWS.
+## Como utilizar
+- **URL Base**: **https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/desafio2**
+- **Endpoints**: **/simian** e **/stats**
+- **Header**: **x-api-key**
+Apenas para que a api não ficasse totalmente exposta, foi definida uma chave que deve ser passada no header das requisições como **x-api-key**. É importante ressaltar que por conta do **cold start** das Lambdas, a primeira requisição a um dos endpoints, depois de um intervalo de 5 a 7 minutos desde a última requisição feita, irá demorar um pouco mais do que as subsequentes. Logo abaixo estão os exemplos de request e response para cada endpoint.
+### POST /simian
+- **curl**
+```
+curl -i --request POST 'https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/desafio2/simian' \
+--header 'x-api-key: hqQD4DjAlNPjweDuceV46vmubvFToW52DSarcvh7' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "dna": ["AAAA", "TTTT", "CCCC", "GGGG"]
+}'
+```
+- **Significado do código de status da resposta HTTP**
+**200**: O DNA é de um **Símio**.
+**403**: O DNA é de um **Humano**.
+**400**: O DNA é inválido.
