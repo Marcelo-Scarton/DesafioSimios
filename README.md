@@ -15,8 +15,7 @@ A implementação da **pipeline de CI/CD** foi feita a partir do **Github Action
 ## Como utilizar
 - **URL Base**: **https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/desafio2**
 - **Endpoints**: **/simian** e **/stats**
-- **Header**: **x-api-key**
-Apenas para que a api não ficasse totalmente exposta, foi definida uma chave que deve ser passada no header das requisições como **x-api-key**. É importante ressaltar que por conta do **cold start** das Lambdas, a primeira requisição a um dos endpoints, depois de um intervalo de 5 a 7 minutos desde a última requisição feita, irá demorar um pouco mais do que as subsequentes. Logo abaixo estão os exemplos de request e response para cada endpoint.
+- **Observações**: Apenas para que a api não ficasse totalmente exposta, foi definida uma chave que deve ser passada no header das requisições como **x-api-key**. É importante ressaltar que por conta do **cold start** das Lambdas, a primeira requisição a um dos endpoints, depois de um intervalo de 5 a 7 minutos desde a última requisição feita, irá demorar um pouco mais do que as subsequentes. Logo abaixo estão os exemplos de request e response para cada endpoint.
 ### POST /simian
 - **curl**
 ```
@@ -30,4 +29,4 @@ curl -i --request POST 'https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/d
 **Significado do código de status da resposta HTTP**
 - **200**: O DNA é de um **Símio**.
 - **403**: O DNA é de um **Humano**.
-- **400**: O DNA é inválido.
+- **400**: O DNA é **inválido**.
