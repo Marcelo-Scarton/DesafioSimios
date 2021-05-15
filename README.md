@@ -2,4 +2,6 @@
 ![deploy simian lambda](https://github.com/Marcelo-Scarton/DesafioMeli/actions/workflows/deploy_simian.yml/badge.svg)
 ![deploy stats lambda](https://github.com/Marcelo-Scarton/DesafioMeli/actions/workflows/deploy_stats.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Marcelo-Scarton/DesafioMeli/branch/main/graph/badge.svg?token=T6SOKX1JDH)](https://codecov.io/gh/Marcelo-Scarton/DesafioMeli)
-# Desafio Meli
+# Desafio Meli Símios
+## Algoritmo
+O algortimo da aplicação é baseado na ideia de um caça-palavras. Antes de processar a matriz enviada, sua validade é verificada em alguns quesitos, como se a mesma é uma **matriz quadrada**, ou seja, **NxN**, se a matriz contém apenas caracteres **'A'**, **'T'**, **'C'** ou **'G'**, ressaltando que a validação é **case sensitive**, e por fim é validado também se a matriz **não está vazia**. Caso a matriz seja inválida, é retornado **400**. Sendo uma matriz válida, o algoritmo tentará achar a **sequência de 4 caracteres iguais** nas linhas **horizontais**, **verticais** e **diagonais** da matriz. Caso pelo menos uma sequência seja encontrada, o DNA identificado é de um **símio**, retornando então **200**, caso contrário, ou seja, não seja encontrada nenhuma sequência de 4 carateres iguais, o DNA identificado é de um **humano**, retornando então **403**. Após o DNA válido ser verificado, o mesmo é armazenado no banco de dados com seu respectivo tipo, humano ou símio.
