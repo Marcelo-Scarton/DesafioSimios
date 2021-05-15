@@ -18,6 +18,7 @@ def stats():
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('meli')
     try:
+        ratio = -1
         mutant = table.scan(
             FilterExpression=Key('type').eq(1)
         )
@@ -26,7 +27,8 @@ def stats():
         )
         count_mutant_dna = len(mutant['Items'])
         count_human_dna = len(human['Items'])
-        ratio = count_mutant_dna / count_human_dna
+        if count_human_dna != 0:
+            ratio = count_mutant_dna / count_human_dna
         body = {
             "count_mutant_dna": count_mutant_dna,
             "count_human_dna": count_human_dna,

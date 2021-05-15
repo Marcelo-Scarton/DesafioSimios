@@ -15,7 +15,7 @@ A implementação da **pipeline de CI/CD** foi feita a partir do **Github Action
 ## Como utilizar
 - **URL Base**: **https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/desafio2**
 - **Endpoints**: **/simian** e **/stats**
-- **Observações**: Apenas para que a api não ficasse totalmente exposta, foi definida uma chave que deve ser passada no header das requisições como **x-api-key**. É importante ressaltar que por conta do **cold start** das Lambdas, a primeira requisição a um dos endpoints, depois de um intervalo de 5 a 7 minutos desde a última requisição feita, irá demorar um pouco mais do que as subsequentes. Além disso, é importante deixar claro que cada DNA válido consultado na api é inserido no DynamoDB, respeitando a condição de existir **apenas 1 registro por DNA**, já que o mesmo é a chave primária da tabela. Logo abaixo estão os exemplos de request e response para cada endpoint.
+- **Observações**: Apenas para que a api não ficasse totalmente exposta, foi definida uma chave que deve ser passada no header das requisições como **x-api-key**. É importante ressaltar que por conta do **cold start** das Lambdas, a primeira requisição a um dos endpoints, depois de um intervalo de 5 a 7 minutos desde a última requisição feita, irá demorar um pouco mais do que as subsequentes. Além disso, é importante deixar claro que cada DNA válido consultado na api é inserido no DynamoDB, respeitando a condição de existir **apenas 1 registro por DNA**, já que o mesmo é a chave primária da tabela. Logo abaixo estão os exemplos de request e response para cada endpoint:
 ### POST /simian
 - **request**
 ```
@@ -26,7 +26,7 @@ curl -i --request POST 'https://2wak4je6ne.execute-api.us-east-1.amazonaws.com/d
     "dna": ["AAAA", "TTTT", "CCCC", "GGGG"]
 }'
 ```
-**Significado de cada status code da response**:
+**Significado de cada status code possível da response**:
 - **200**: O DNA é de um **Símio**.
 - **403**: O DNA é de um **Humano**.
 - **400**: O DNA é **inválido**.
